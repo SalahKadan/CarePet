@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - CarePet</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .ml-3 { margin-left: 0.75rem; }
+    .w-full { width: 100%; }
+    .relative { position: relative; }
+    .absolute { position: absolute; }
+    .top-0 { top: 0; }
+    .right-0 { right: 0; }
+    .p-3 { padding: 0.75rem; }
+    .dashboard-grid { grid-template-columns: 1fr 300px; gap: var(--space-lg); }
+    @media (max-width: 900px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+    }
+    .sugar-bar-bg {
+      width: 100%; height: 14px; background: linear-gradient(90deg, #e74c3c 0%, #e74c3c 12%, #2ecc71 25%, #2ecc71 55%, #f39c12 65%, #e74c3c 80%, #e74c3c 100%);
+      border-radius: var(--radius-full); position: relative; overflow: hidden; border: 1px solid var(--border-light);
+    }
+    .sugar-indicator {
+      position: absolute; top: -3px; width: 6px; height: 20px; background: white; border-radius: 3px; box-shadow: 0 0 6px rgba(255,255,255,0.8); transition: left 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="emoji">🐾</span> CarePet
+    </a>
+    <div class="nav-links">
+      <div class="badge badge-purple" style="pointer-events: none;" id="dash-level-badge">⭐ Level 1</div>
+      <a href="choose-pet.html" class="nav-link" style="font-size: 0.9rem;">Change Pet</a>
+      <a href="#" class="nav-link" style="font-size: 0.9rem;" id="logout-btn">Log Out</a>
+    </div>
+  </nav>
+
+  <main class="container py-5 mt-2">
+    <!-- Header -->
+    <header class="mb-5 fade-in">
+      <h1 class="mb-1">Good morning, Alex 👋</h1>
+      <p class="opacity-70 text-lg" id="dash-pet-greeting">Your pet is feeling energetic today!</p>
+    </header>
+
+    <div class="grid dashboard-grid">
+      <!-- Left Column: Main interactions -->
+      <div class="flex-col gap-lg delay-100 slide-up">
+        
+        <!-- Pet Status Header -->
+        <section class="card card-glass text-center overflow-hidden relative" style="border-width: 2px;">
+          <div class="absolute top-0 right-0 p-3">
+            <span class="badge badge-teal" id="dash-pet-path">Path</span>
+          </div>
+          <div class="mb-3 mt-4" style="font-size: 5rem; animation: float 3s ease-in-out infinite;" id="dash-pet-emoji">🐱</div>
+          <h2 class="mb-2 text-gradient" id="dash-pet-name">Pet</h2>
+          
+          <div class="grid grid-2 gap-sm mt-4 text-left">
+            <div class="card p-3" style="background: rgba(0,0,0,0.2);">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-bold opacity-70">Energy</span>
+                <span class="text-sm">80%</span>
+              </div>
+              <div class="progress-bar-container"><div class="progress-bar" style="width: 80%; background: var(--accent-green);"></div></div>
+            </div>
+            
+            <div class="card p-3" style="background: rgba(0,0,0,0.2);">
+               <div class="flex justify-between mb-2">
+                <span class="text-sm font-bold opacity-70">Happiness</span>
+                <span class="text-sm">100%</span>
+              </div>
+              <div class="progress-bar-container"><div class="progress-bar" style="width: 100%; background: var(--accent-pink);"></div></div>
+            </div>
+          </div>
+
+          <!-- Blood Sugar Bar (DiaPet only) -->
+          <div id="dash-sugar-section" style="display: none;" class="mt-4">
+            <div class="card p-3" style="background: rgba(0,0,0,0.2);">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-bold opacity-70">🩸 Blood Sugar</span>
+                <span class="text-sm font-bold" id="dash-sugar-value">110 mg/dL</span>
+              </div>
+              <div class="progress-bar-container" style="height: 14px;">
+                <div class="progress-bar" id="dash-sugar-bar" style="width: 27%; background: #2ecc71; transition: all 0.4s ease;"></div>
+              </div>
+              <p class="text-xs mt-2 mb-0 font-bold" id="dash-sugar-status" style="margin-top: 0.5rem;">✅ Normal range</p>
+            </div>
+          </div>
+
+          <div class="mt-4">
+             <a href="pet.html" class="btn btn-primary btn-block" id="dash-pet-care-btn">Care for Pet</a>
+          </div>
+        </section>
+
+        <!-- Daily Missions -->
+        <section>
+          <div class="flex justify-between items-center mb-3">
+            <h2>Today's Missions</h2>
+            <span class="text-sm font-bold opacity-70">2 / 3 Completed</span>
+          </div>
+          
+          <div class="grid gap-sm">
+             <div class="card task-item" style="opacity: 0.5; text-decoration: line-through; padding: 1.25rem;">
+               <label class="checkbox-group items-center w-full">
+                 <input type="checkbox" class="task-checkbox" checked>
+                 <div class="ml-3 flex justify-between w-full items-center">
+                   <div>
+                     <h4 class="mb-0 text-sm">Morning Check-in</h4>
+                     <p class="text-xs opacity-70 mb-0 mt-1">Checked your daily health status</p>
+                   </div>
+                   <span class="text-xs font-bold text-gradient">+10 XP</span>
+                 </div>
+               </label>
+             </div>
+
+             <div class="card task-item" style="opacity: 0.5; text-decoration: line-through; padding: 1.25rem;">
+               <label class="checkbox-group items-center w-full">
+                 <input type="checkbox" class="task-checkbox" checked>
+                 <div class="ml-3 flex justify-between w-full items-center">
+                   <div>
+                     <h4 class="mb-0 text-sm">Drink Water</h4>
+                     <p class="text-xs opacity-70 mb-0 mt-1">Stay hydrated for your health</p>
+                   </div>
+                   <span class="text-xs font-bold text-gradient">+5 XP</span>
+                 </div>
+               </label>
+             </div>
+
+             <div class="card task-item" style="border-left: 4px solid var(--accent-purple); padding: 1.25rem; background: linear-gradient(to right, rgba(135,113,209,0.1), transparent);">
+               <label class="checkbox-group items-center w-full">
+                 <input type="checkbox" class="task-checkbox">
+                 <div class="ml-3 flex justify-between w-full items-center">
+                   <div>
+                     <h4 class="mb-0 text-sm">Daily Lesson</h4>
+                     <p class="text-xs opacity-70 mb-0 mt-1">Learn something new about your condition</p>
+                   </div>
+                   <span class="badge badge-purple">+15 XP</span>
+                 </div>
+               </label>
+             </div>
+          </div>
+        </section>
+
+      </div> <!-- End Left Column -->
+
+      <!-- Right Column: Sidebar context -->
+      <div class="flex-col gap-lg delay-200 slide-up">
+        
+        <!-- Quick Actions -->
+        <section class="card">
+          <h3 class="mb-3 text-lg">Quick Actions</h3>
+          <div class="grid grid-2 gap-sm">
+             <button class="btn btn-secondary btn-block text-sm" style="padding: 0.8rem; flex-direction: column; gap: 0.4rem;"><span style="font-size: 1.8rem; line-height: 1;">🚨</span><span class="opacity-70 text-xs">S.O.S</span></button>
+             <button class="btn btn-secondary btn-block text-sm" style="padding: 0.8rem; flex-direction: column; gap: 0.4rem;"><span style="font-size: 1.8rem; line-height: 1;">📝</span><span class="opacity-70 text-xs">Track</span></button>
+          </div>
+        </section>
+
+        <!-- Educational Card -->
+        <section class="card" style="background: linear-gradient(135deg, rgba(59, 164, 171, 0.15), rgba(135, 113, 209, 0.1)); border-color: rgba(59, 164, 171, 0.3);">
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-sm font-bold text-gradient">Daily Discovery</span>
+            <span style="font-size: 1.2rem;">💡</span>
+          </div>
+          <h4 class="text-lg mb-2">Know your numbers!</h4>
+          <p class="text-sm opacity-70 mb-3">Understanding your body's signals is a superpower. Learn what they mean!</p>
+          <a href="#" class="text-sm font-bold text-gradient" style="display: inline-block;">Read more &rarr;</a>
+        </section>
+
+        <!-- Achievements -->
+        <section class="card">
+           <div class="flex justify-between items-center mb-3">
+             <h3 class="mb-0 text-lg">Badges</h3>
+             <a href="#" class="text-xs opacity-70">See all</a>
+           </div>
+           <div class="flex gap-sm justify-between">
+             <div class="text-center" title="First Week Completed">
+               <div style="font-size: 2.2rem; filter: drop-shadow(0 0 8px var(--accent-purple-glow));">🌟</div>
+             </div>
+             <div class="text-center" title="Hydration Hero">
+               <div style="font-size: 2.2rem; filter: drop-shadow(0 0 8px rgba(59, 164, 171, 0.4));">💧</div>
+             </div>
+             <div class="text-center opacity-50" style="filter: grayscale(100%);">
+               <div style="font-size: 2.2rem;">🏆</div>
+             </div>
+             <div class="text-center opacity-50" style="filter: grayscale(100%);">
+               <div style="font-size: 2.2rem;">🛡️</div>
+             </div>
+           </div>
+        </section>
+
+      </div> <!-- End Right Column -->
+    </div> <!-- End Main Grid -->
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

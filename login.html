@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Back - CarePet</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Small wrapper alignment override for full height centering */
+    html, body { height: 100%; justify-content: center; }
+    .w-full { width: 100%; }
+  </style>
+</head>
+<body class="flex items-center justify-center p-4">
+  <div class="card card-glass w-full slide-up" style="max-width: 450px; padding: 2.5rem; border-color: var(--accent-teal); margin: 0 auto;">
+    <div class="text-center mb-4">
+      <a href="index.html" class="nav-brand justify-center mb-3" style="font-size: 2rem;">🐾 CarePet</a>
+      <h2>Welcome Back 👋</h2>
+      <p class="opacity-70 text-sm">Your pet has been missing you!</p>
+    </div>
+    
+    <form action="choose-pet.html" class="mt-4">
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="hello@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <div class="flex justify-between items-center mb-1">
+          <label class="form-label m-0">Password</label>
+          <a href="#" class="text-xs opacity-70 hover:opacity-100" style="transition: opacity var(--trans-fast);">Forgot Password?</a>
+        </div>
+        <input type="password" class="form-control" placeholder="••••••••" required>
+      </div>
+
+      <label class="checkbox-group mb-4 mt-2">
+        <input type="checkbox">
+        <span class="text-sm opacity-70" style="margin-left: 0.5rem; display: block; margin-top: 0.2rem;">Remember me</span>
+      </label>
+
+      <button type="submit" class="btn btn-primary btn-block mb-4" style="background: var(--accent-teal); box-shadow: 0 4px 15px rgba(59, 164, 171, 0.4); font-size: 1.1rem; padding: 1rem;">Log In</button>
+      
+      <p class="text-center text-sm opacity-70">
+        New here? <a href="register.html" class="font-bold text-gradient" style="margin-left: 0.2rem;">Create an Account</a>
+      </p>
+    </form>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>

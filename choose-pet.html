@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Companion - CarePet</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .pet-select-card:hover { border-color: var(--accent-purple) !important; background: var(--surface-hover); }
+    .selected-card-glow { background: rgba(135, 113, 209, 0.05); }
+    .w-full { width: 100%; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="emoji">🐾</span> CarePet
+    </a>
+    <div class="nav-links">
+      <span class="text-sm opacity-70">Step 1 of 3</span>
+    </div>
+  </nav>
+
+  <main class="container py-5 mt-4 flex-col items-center">
+    <div class="text-center mb-5 slide-up">
+      <div class="badge badge-purple mb-3">Your Journey Begins</div>
+      <h2>Choose Your Companion ✨</h2>
+      <p class="opacity-70 text-lg" style="max-width: 600px; margin: 0 auto;">Select the pet that matches your unique path. Don't worry, you can always learn about other paths later.</p>
+    </div>
+
+    <form action="dashboard.html" class="w-full">
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;" class="mb-5 fade-in delay-200">
+        <!-- DiaPet -->
+        <label class="card pet-select-card text-center cursor-pointer relative" style="cursor: pointer; transition: all var(--trans-smooth); flex: 0 1 280px;">
+          <input type="radio" name="pet" value="diabetes" style="display: none;" required>
+          <div class="mb-3" style="font-size: 3.5rem;">🐱</div>
+          <h3 class="mb-1 text-gradient">DiaPet</h3>
+          <div class="badge badge-purple mb-3" style="margin: 0 auto;">Diabetes</div>
+          <p class="text-sm opacity-70 mb-4" style="min-height: 48px;">Learn to balance energy and monitor your levels together.</p>
+          <div class="btn btn-outline btn-block text-sm">Select DiaPet</div>
+        </label>
+
+        <!-- AirPet -->
+        <label class="card pet-select-card text-center cursor-pointer relative" style="cursor: pointer; transition: all var(--trans-smooth); flex: 0 1 280px;">
+          <input type="radio" name="pet" value="asthma" style="display: none;">
+          <div class="mb-3" style="font-size: 3.5rem;">🦉</div>
+          <h3 class="mb-1 text-gradient">AirPet</h3>
+          <div class="badge badge-teal mb-3" style="margin: 0 auto;">Asthma</div>
+          <p class="text-sm opacity-70 mb-4" style="min-height: 48px;">Master breathing techniques and track your air quality.</p>
+          <div class="btn btn-outline btn-block text-sm">Select AirPet</div>
+        </label>
+
+        <!-- FocusPet -->
+        <label class="card pet-select-card text-center cursor-pointer relative" style="cursor: pointer; transition: all var(--trans-smooth); flex: 0 1 280px;">
+          <input type="radio" name="pet" value="adhd" style="display: none;">
+          <div class="mb-3" style="font-size: 3.5rem;">🐿️</div>
+          <h3 class="mb-1 text-gradient">FocusPet</h3>
+          <div class="badge badge-blue mb-3" style="margin: 0 auto;">ADHD</div>
+          <p class="text-sm opacity-70 mb-4" style="min-height: 48px;">Channel your energy and unlock your hidden superpowers.</p>
+          <div class="btn btn-outline btn-block text-sm">Select FocusPet</div>
+        </label>
+
+        <!-- CalmPet -->
+        <label class="card pet-select-card text-center cursor-pointer relative" style="cursor: pointer; transition: all var(--trans-smooth); flex: 0 1 280px;">
+          <input type="radio" name="pet" value="epilepsy" style="display: none;">
+          <div class="mb-3" style="font-size: 3.5rem;">🐢</div>
+          <h3 class="mb-1 text-gradient">CalmPet</h3>
+          <div class="badge badge-pink mb-3" style="margin: 0 auto;">Epilepsy</div>
+          <p class="text-sm opacity-70 mb-4" style="min-height: 48px;">Find your rhythm, stay grounded, and track your peace.</p>
+          <div class="btn btn-outline btn-block text-sm">Select CalmPet</div>
+        </label>
+
+        <!-- CeliPet -->
+        <label class="card pet-select-card text-center cursor-pointer relative" style="cursor: pointer; transition: all var(--trans-smooth); flex: 0 1 280px;">
+          <input type="radio" name="pet" value="celiac" style="display: none;">
+          <div class="mb-3" style="font-size: 3.5rem;">🐰</div>
+          <h3 class="mb-1 text-gradient">CeliPet</h3>
+          <div class="badge badge-green mb-3" style="margin: 0 auto;">Celiac Disease</div>
+          <p class="text-sm opacity-70 mb-4" style="min-height: 48px;">Discover safe, delicious foods and build a healthy gut.</p>
+          <div class="btn btn-outline btn-block text-sm">Select CeliPet</div>
+        </label>
+
+        <!-- HeartPet -->
+        <label class="card pet-select-card text-center cursor-pointer relative" style="cursor: pointer; transition: all var(--trans-smooth); flex: 0 1 280px;">
+          <input type="radio" name="pet" value="heart" style="display: none;">
+          <div class="mb-3" style="font-size: 3.5rem;">🦁</div>
+          <h3 class="mb-1 text-gradient">HeartPet</h3>
+          <div class="badge badge-pink mb-3" style="margin: 0 auto;">Heart Disease</div>
+          <p class="text-sm opacity-70 mb-4" style="min-height: 48px;">Strengthen your core and pace your daily adventures.</p>
+          <div class="btn btn-outline btn-block text-sm">Select HeartPet</div>
+        </label>
+
+        <!-- BreathePet -->
+        <label class="card pet-select-card text-center cursor-pointer relative" style="cursor: pointer; transition: all var(--trans-smooth); flex: 0 1 280px;">
+          <input type="radio" name="pet" value="cf" style="display: none;">
+          <div class="mb-3" style="font-size: 3.5rem;">🐬</div>
+          <h3 class="mb-1 text-gradient">BreathePet</h3>
+          <div class="badge badge-blue mb-3" style="margin: 0 auto;">Cystic Fibrosis</div>
+          <p class="text-sm opacity-70 mb-4" style="min-height: 48px;">Clear your pathways and dive into healthy routines.</p>
+          <div class="btn btn-outline btn-block text-sm">Select BreathePet</div>
+        </label>
+      </div>
+
+      <div class="text-center mt-5 mb-5 fade-in delay-300">
+        <button type="submit" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;">Complete Setup <span style="font-size: 1.4rem; margin-left: 0.5rem; line-height: 0;">→</span></button>
+      </div>
+    </form>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.querySelectorAll('input[name="pet"]').forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        document.querySelectorAll('.pet-select-card').forEach(card => {
+          card.style.borderColor = 'var(--border-subtle)';
+          card.style.boxShadow = 'var(--shadow-sm)';
+          card.classList.remove('selected-card-glow');
+          const btn = card.querySelector('.btn-outline');
+          btn.style.background = 'transparent';
+          btn.style.borderColor = 'var(--border-light)';
+        });
+        const parentCard = e.target.closest('.pet-select-card');
+        parentCard.style.borderColor = 'var(--accent-purple)';
+        parentCard.style.boxShadow = 'var(--shadow-glow)';
+        parentCard.classList.add('selected-card-glow');
+        const activeBtn = parentCard.querySelector('.btn-outline');
+        activeBtn.style.background = 'var(--accent-purple)';
+        activeBtn.style.borderColor = 'var(--accent-purple)';
+        activeBtn.style.color = '#fff';
+      });
+    });
+  </script>
+</body>
+</html>

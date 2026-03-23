@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pet-page-title">Pet - CarePet</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .pet-area {
+      min-height: 300px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: radial-gradient(circle at center, rgba(135,113,209,0.15) 0%, transparent 70%);
+      border-radius: var(--radius-lg); position: relative;
+    }
+    .pet-avatar {
+      font-size: 7rem;
+      animation: breathe 4s ease-in-out infinite;
+      filter: drop-shadow(0 10px 20px rgba(135,113,209,0.3));
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1) translateY(0); }
+      50% { transform: scale(1.05) translateY(-10px); }
+    }
+    .w-full { width: 100%; }
+    .mr-2 { margin-right: 0.5rem; }
+    .absolute { position: absolute; }
+    .top-0 { top: 0; }
+    .right-0 { right: 0; }
+    .p-3 { padding: 0.75rem; }
+    .p-4 { padding: 1rem; }
+    .m-0 { margin: 0; }
+    @media (max-width: 900px) {
+      .pet-page-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-brand text-sm font-medium" style="color: var(--text-secondary); font-size: 1rem; transition: color var(--trans-fast);">&larr; Back to Dashboard</a>
+    <div class="nav-links">
+      <span class="badge badge-teal" id="pet-level-badge">Level 1</span>
+      <a href="choose-pet.html" class="nav-link" style="font-size: 0.9rem;">Change Pet</a>
+    </div>
+  </nav>
+
+  <main class="container py-5 mt-2">
+    <div class="grid pet-page-grid" style="grid-template-columns: 1fr 350px; gap: var(--space-xl);">
+      
+      <!-- Left Column: Pet Interaction Area -->
+      <div class="flex-col gap-lg slide-up">
+
+        <!-- Pet Profile Card -->
+        <section class="card pet-area text-center" style="border-color: var(--accent-purple);">
+          <div class="pet-avatar mb-3" id="pet-avatar" style="line-height: 1;">🐱</div>
+          <h1 class="mb-1 text-gradient" id="pet-title" style="font-size: 2.5rem; letter-spacing: -1px;">Pet</h1>
+          <p class="opacity-70 text-lg mb-3" id="pet-feeling">Your pet is feeling peaceful today.</p>
+
+          <!-- XP Bar -->
+          <div class="w-full mb-4" style="max-width: 350px; margin: 0 auto;">
+            <div class="flex justify-between mb-2">
+              <span class="text-sm font-bold opacity-70">⭐ Experience</span>
+              <span class="text-sm font-bold text-gradient" id="pet-xp-label">0 / 100 XP</span>
+            </div>
+            <div class="progress-bar-container"><div class="progress-bar" id="pet-xp-bar" style="width: 0%;"></div></div>
+          </div>
+
+          <!-- Action Buttons (Dynamic) -->
+          <div class="flex gap-sm justify-center mt-2 mb-4 flex-wrap" id="pet-actions">
+            <!-- Filled dynamically by script.js -->
+          </div>
+        </section>
+
+        <!-- Blood Sugar Section (DiaPet only) -->
+        <section class="card" id="pet-sugar-section" style="display: none; border-color: rgba(231,76,60,0.3); background: linear-gradient(135deg, rgba(231,76,60,0.08), rgba(46,204,113,0.08));">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="mb-0 text-lg">🩸 Blood Sugar Monitor</h3>
+            <span class="font-bold text-lg" id="pet-sugar-value" style="letter-spacing: 1px;">110 mg/dL</span>
+          </div>
+          <div class="progress-bar-container" style="height: 16px; margin-bottom: 0.75rem;">
+            <div class="progress-bar" id="pet-sugar-bar" style="width: 27%; background: #2ecc71; transition: all 0.4s ease; border-radius: var(--radius-full);"></div>
+          </div>
+          <p class="text-sm font-bold mb-4" id="pet-sugar-status" style="margin: 0;">✅ Normal range</p>
+          <div class="flex gap-sm justify-center mt-3">
+            <button class="btn btn-secondary text-sm" id="sugar-down-btn" style="border-radius: var(--radius-full);">🍬 Eat Snack (-20)</button>
+            <button class="btn btn-secondary text-sm" id="sugar-up-btn" style="border-radius: var(--radius-full);">🧃 Drink Juice (+20)</button>
+          </div>
+        </section>
+
+        <!-- Rename Pet -->
+        <section class="card">
+          <h3 class="mb-3 text-lg">✏️ Name Your Pet</h3>
+          <form>
+            <div class="flex gap-sm items-center">
+              <input type="text" class="form-control" id="pet-nickname-input" placeholder="Give your pet a name..." style="flex: 1;">
+              <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Save Name</button>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <!-- Right Column: Tasks and Progress -->
+      <div class="flex-col gap-lg delay-100 slide-up">
+        
+        <!-- Supportive Message -->
+        <section class="card" style="background: rgba(135,113,209,0.1); border-color: var(--accent-purple);">
+          <div class="flex gap-sm items-start">
+            <div style="font-size: 2rem; line-height: 1.2;">💌</div>
+            <div>
+              <h4 class="mb-1 text-md">Message from your pet</h4>
+              <p class="text-sm opacity-70 m-0" style="font-style: italic; line-height: 1.5;">"You did great yesterday! Remember, every step forward makes us both stronger."</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Today's Care Tasks -->
+        <section class="card">
+          <h3 class="mb-3 text-lg">Care Tasks</h3>
+          <div class="grid gap-sm">
+             <div class="card task-item" style="padding: 1rem; border-color: var(--border-light);">
+               <label class="checkbox-group items-center w-full">
+                 <input type="checkbox" class="task-checkbox">
+                 <div class="ml-3">
+                   <h4 class="mb-0 text-sm">Evening Check-in</h4>
+                   <p class="text-xs opacity-70 mb-0 mt-1">How are you feeling tonight?</p>
+                 </div>
+               </label>
+             </div>
+             <div class="card task-item" style="padding: 1rem; border-color: var(--border-light);">
+               <label class="checkbox-group items-center w-full">
+                 <input type="checkbox" class="task-checkbox">
+                 <div class="ml-3">
+                   <h4 class="mb-0 text-sm">Clean Space</h4>
+                   <p class="text-xs opacity-70 mb-0 mt-1">Keep your area tidy for better health</p>
+                 </div>
+               </label>
+             </div>
+          </div>
+        </section>
+
+        <!-- Reward Area -->
+        <section class="card">
+          <h3 class="mb-2 text-lg">Treasures</h3>
+          <p class="text-sm opacity-70 mb-3">Collect these to buy accessories!</p>
+          <div class="flex justify-between items-center p-3" style="background: rgba(0,0,0,0.2); border-radius: var(--radius-md);">
+            <div class="flex items-center gap-xs">
+              <span style="font-size: 1.5rem; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));">💎</span>
+              <span class="font-bold text-lg" style="letter-spacing: 1px;">450</span>
+            </div>
+            <button class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Shop</button>
+          </div>
+        </section>
+
+        <!-- Emergency Button -->
+        <section>
+          <button class="btn btn-block" style="background: rgba(209,113,158,0.1); color: var(--accent-pink); border: 2px solid rgba(209,113,158,0.4); padding: 1.2rem; transition: all var(--trans-fast);"><span class="mr-2" style="font-size: 1.2rem;">❤️</span> Help my pet (I don't feel well)</button>
+        </section>
+        
+      </div>
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

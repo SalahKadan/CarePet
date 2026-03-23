@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Account - CarePet</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    html, body { height: 100%; justify-content: center; background-attachment: scroll; }
+    .w-full { width: 100%; }
+    .register-card .form-group { margin-bottom: 0.85rem; }
+    .register-card .form-control { padding: 0.7rem 1rem; font-size: 0.95rem; border-radius: 12px; }
+    .register-card .form-label { margin-bottom: 0.3rem; font-size: 0.9rem; }
+    .register-card h2 { font-size: 1.5rem; margin-bottom: 0.3rem; }
+    .register-card .pw-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+  </style>
+</head>
+<body class="flex items-center p-4">
+  <div class="card card-glass w-full slide-up register-card" style="max-width: 580px; padding: 2rem 2.5rem; border-color: var(--accent-purple); margin: 0 auto;">
+    <div class="text-center" style="margin-bottom: 1.2rem;">
+      <a href="index.html" class="nav-brand justify-center" style="font-size: 1.75rem; margin-bottom: 0.5rem;">🐾 CarePet</a>
+      <h2>Welcome, friend ✨</h2>
+      <p class="opacity-70 text-sm" style="margin-bottom: 0;">Let's create a safe space for you and your companion.</p>
+    </div>
+
+    <form action="choose-pet.html">
+      <div class="form-group">
+        <label class="form-label">What should we call you? (First Name or Nickname)</label>
+        <input type="text" class="form-control" placeholder="E.g. Alex" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Your Email</label>
+        <input type="email" class="form-control" placeholder="hello@example.com" required>
+      </div>
+
+      <div class="pw-row form-group">
+        <div>
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <div>
+          <label class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" placeholder="••••••••" required>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;" class="form-group">
+        <div>
+          <label class="form-label">How old are you?</label>
+          <select class="form-control" required style="cursor: pointer;">
+            <option value="" disabled selected>Select age group</option>
+            <option value="under13">Under 13</option>
+            <option value="13to17">13 - 17</option>
+            <option value="18plus">18+</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Parent/Guardian Email <span class="opacity-70" style="font-weight: 400;">(Optional)</span></label>
+          <input type="email" class="form-control" placeholder="parent@example.com">
+        </div>
+      </div>
+
+      <label class="checkbox-group" style="margin-bottom: 1rem; margin-top: 0.25rem;">
+        <input type="checkbox" required>
+        <span class="text-sm opacity-70" style="margin-left: 0.5rem;">I agree to the <a href="#">Friendly Terms of Service</a> and <a href="#">Privacy Policy</a>.</span>
+      </label>
+
+      <button type="submit" class="btn btn-primary btn-block" style="font-size: 1rem; padding: 0.85rem; margin-bottom: 0.85rem;">Create Account</button>
+
+      <p class="text-center text-sm opacity-70" style="margin-bottom: 0;">
+        Already have a companion? <a href="login.html" class="font-bold text-gradient" style="margin-left: 0.2rem;">Log In</a>
+      </p>
+    </form>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
